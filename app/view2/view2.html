@@ -1,18 +1,47 @@
-<form class="form linha">
-  <div class="coluna">
-    <div class="form-group espaçamento">
-      <label class="musica" for="musica">Nome da Música:</label>
-      <input type="text" class="form-control" id="text" placeholder="Digite o nome da música">
-      <label class="artista" for="artista">Nome do Artista:</label>
-      <input type="text" class="form-control" id="text" placeholder="Digite o nome do artista">  
-      <label class="album" for="album">Nome do Álbum:</label>
-      <input type="text" class="form-control" id="text" placeholder="Digite o nome do álbum">
-      <label class="lançamento" for="duraçao">Ano de Lançamento:</label>
-      <input type="text" class="form-control" id="text" placeholder="Digite o ano de lançamento">
-      <label class="duraçao" for="duraçao">Duração da Música:</label>
-      <input type="text" class="form-control" id="text" placeholder="Digite a duração da música">
+  <ul>
+  <div class="row">
+    <div ng-repeat="art in artistas" class="col-sm-4">
+        <div class="letra">
+          <div >
+            <div class="containner1">
+              <img src="{{art[2]}}" class="img-rounded" width="150" height="150" />
+            </div>
+            <div class="containner2">
+               <p><strong>Nome do Artista:</strong></p>
+               <p>{{art[0]}}</p>
+               <div ng-repeat="albs in art[1]">
+               <p><strong>Nome do Álbum:</strong></p>
+               <p>{{albs[0]}} - {{albs[1]}}</p>
+               <p><strong>Lista de músicas:</strong></p>
+               <div ng-repeat="musis in albs[2]">
+               <p>{{musis[0]}} - {{musis[1]}}</p>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
-  <button type="enviar" class="btn">Enviar</button>
+</div>
+</div>
+  </ul>
+
+<form class="form linha">
+
+  <div class="coluna3">
+    <div class="form-group espaçamento">
+      <label class="musica" for="musica">Nome da Música:</label>
+      <input type="text" class="form-control" id="text" placeholder="Digite o nome da música" ng-model="musica">
+      <label class="artista" for="artista">Nome do Artista:</label>
+      <input type="text" class="form-control" id="text" placeholder="Digite o nome do artista" ng-model="artista">
+      <label class="album" for="album">Nome do Álbum:</label>
+      <input type="text" class="form-control" id="text" placeholder="Digite o nome do álbum" ng-model="album">
+      <label class="lançamento" for="duraçao">Ano de Lançamento:</label>
+      <input type="text" class="form-control" id="text" placeholder="Digite o ano de lançamento" ng-model="ano">
+      <label class="duraçao" for="duraçao">Duração da Música:</label>
+      <input type="text" class="form-control" id="text" placeholder="Digite a duração da música" ng-model="duracao">
+      <label class="img" for="img">Link da imagem do artista:</label>
+      <input type="text" ng-model="img" class="form-control" id="text" placeholder="Cole aqui o link da música" ng-model="img">
+    </div>
+  </div>
+  <button type="enviar" class="btn" ng-click="addMusica()" ng-disabled="!informacoesCompletas()">Adicionar</button>
   <button type ="reset" class="btn" value="Limpar">Limpar</button>
 </form>

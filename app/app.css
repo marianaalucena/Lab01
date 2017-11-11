@@ -50,11 +50,34 @@ button{
 
 .coluna{
   width: 460px;
+  float: left;
+}
+
+.coluna3{
+  width: 460px;
+}
+
+.coluna1{
+  width: 480px;
+  float: right;
+  padding-bottom: 20px;
+  padding-left: 50px;
+}
+
+.letra{
+  color: #FA8072 !important;
+  float: right;
+}
+
+.colorModal{
+  color: #FA8072;
+  padding: 12px;
 }
 
 .pesquisa{
   float: right;
-  padding-top: -8px;
+  padding: 8px;
+
 }
 
 .logo{
@@ -83,4 +106,21 @@ a:hover{
 
 label, input{
   padding: 20px 0px 5px 0px;
+}
+
+.containner1{
+  float: left;
+  padding: 10px 10px 10px 60px;
+}
+
+.containner2{
+  float: right;
+}
+.col-sm-4 {
+  background-color: #FFEFD5;
+  margin-left: 175px;
+  text-align: center;
+  border-style: ridge;
+  border-color: #FFFFFF;
+  border-width: thick;
 }
