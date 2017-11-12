@@ -1,4 +1,4 @@
-  <ul>
+<!--  <ul>
   <div class="row">
     <div ng-repeat="art in artistas" class="col-sm-4">
         <div class="letra">
@@ -22,26 +22,26 @@
   </div>
 </div>
 </div>
-  </ul>
+  </ul> -->
 
 <form class="form linha">
 
   <div class="coluna3">
     <div class="form-group espaçamento">
       <label class="musica" for="musica">Nome da Música:</label>
-      <input type="text" class="form-control" id="text" placeholder="Digite o nome da música" ng-model="musica">
+      <input type="text" class="form-control" id="text" placeholder="Digite o nome da música" ng-model="musica.nome">
       <label class="artista" for="artista">Nome do Artista:</label>
-      <input type="text" class="form-control" id="text" placeholder="Digite o nome do artista" ng-model="artista">
+      <input type="text" class="form-control" id="text" placeholder="Digite o nome do artista" ng-model="musica.artista">
       <label class="album" for="album">Nome do Álbum:</label>
-      <input type="text" class="form-control" id="text" placeholder="Digite o nome do álbum" ng-model="album">
+      <input type="text" class="form-control" id="text" placeholder="Digite o nome do álbum" ng-model="musica.album">
       <label class="lançamento" for="duraçao">Ano de Lançamento:</label>
-      <input type="text" class="form-control" id="text" placeholder="Digite o ano de lançamento" ng-model="ano">
-      <label class="duraçao" for="duraçao">Duração da Música:</label>
-      <input type="text" class="form-control" id="text" placeholder="Digite a duração da música" ng-model="duracao">
-      <label class="img" for="img">Link da imagem do artista:</label>
-      <input type="text" ng-model="img" class="form-control" id="text" placeholder="Cole aqui o link da música" ng-model="img">
+      <input type="text" class="form-control" id="text" placeholder="Digite o ano de lançamento" ng-model="musica.ano">
+      <label class="duracao" for="duraçao">Duração da Música:</label>
+      <input type="text" class="form-control" id="text" placeholder="Digite a duração da música" ng-model="musica.duracao">
     </div>
   </div>
-  <button type="enviar" class="btn" ng-click="addMusica()" ng-disabled="!informacoesCompletas()">Adicionar</button>
+  {{musica}}
+  {{albuns}}
+  <button type="enviar" class="btn" ng-click="addMusica(musica)" ng-disabled="!musica.nome || !musica.artista || !musica.album || !musica.ano || !musica.duracao">Adicionar</button>
   <button type ="reset" class="btn" value="Limpar">Limpar</button>
 </form>

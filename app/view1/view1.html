@@ -1,70 +1,102 @@
 <div class="pesquisa">
 	<form class="form-inline">
 	  <label for="pesquisa"></label>
-	  <input type="text" class="form-control" id="email" placeholder="O que deseja pesquisar?" ng-model="pesquisa">
-	  <button class="btn btn-default" type="submit" ng-click="buscarArtista()" data-toggle="modal" data-target="#product_view"><i class="fa fa-search">
+	  <input type="text" class="form-control" id="text" placeholder="O que deseja pesquisar?" ng-model="artistaBuscado">
+	  <button class="btn btn-default" type="enviar" ng-click="buscarArtista(artistaBuscado)" data-toggle="modal" data-target="#product_view"><i class="fa fa-search">
+	  	
 	  <i class="glyphicon glyphicon-search"></i>
 	  </form>
 </div>
 
-<form class="form linha" >
+<div>
+	
+<form class="form linha">
 	<div class="coluna">
-	  <div class="form-group">
-	    <label class="name" for="artista">Nome do Artista:</label>
-	    <input type="text" class="form-control" id="text" placeholder="Digite o nome do artista" ng-model="artista">
-	  	<label class="img" for="img">Link da imagem do artista:</label>
-		<input type="text" ng-model="img" class="form-control" id="text" placeholder="Cole aqui o link da imagem" ng-model="img">
-	 </div>
-	 <button type="enviar" ng-click="addArtista()" class="btn">Enviar</button>
-	 </div>
-  
+			  <div class="form-group">
+			    <label class="name" for="artista">Nome do Artista:</label>
+			    <input type="text" class="form-control" id="text" placeholder="Digite o nome do artista" ng-model="artista.nome">
+			  	<label class="img" for="img">Link da imagem do artista:</label>
+				<input type="text" ng-model="artista.imagem" class="form-control" id="text" placeholder="Cole aqui o link da imagem">
+			 </div>
+			 <button type="enviar" ng-click="addArtista(artista)" class="btn">Enviar</button>
+			 </div>
+		  
 
-  	<div class="coluna1">
-  		<h2>Artista(s) adicionado(s):</h2>
-  		<p>{{artista}}</p>
+		  	<div class="coluna1">
+		  		<h2>Artista(s) adicionado(s):</h2>
+		  		<p ng-repeat="artistaAdicionado in artistas">
+  			{{artistaAdicionado.nome}}
+  		</p>
+  
   	</div>
 
+  	
 
-  <!-- <button href="#!/view2" type="adionar musica" class="btn">Adicionar Música</button> -->
+
+	  <!-- <button href="#!/view2" type="adionar musica" class="btn">Adicionar Música</button> -->
 </form>
-
-<div class="modal fade product_view" id="product_view">
-    <div class="modal-dialog">
-        <div class="modal-content colorModal">
-            <div class="modal-header">
-                <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
-                <h3 class="modal-title">Descrição</h3>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-6 product_img">
-                        <img src="http://img.bbystatic.com/BestBuy_US/images/products/5613/5613060_sd.jpg" class="img-responsive">
-                    </div>
-                    <div class="col-md-6 product_content">
-                        <h4>Nome do artista: {{procura}}</h4>
-                        <h4>Última Música: {{ultimaMusica}}</h4>
-	   					<h4>Nota: {{nota}}</h4>
-                        
-                       
-                        <div class="space-ten"></div>
-                        <div class="btn-ground">
-	   						<input type="ultimaMusica" nome="ultimaMusica" class="form-control" id="text" placeholder="Última música tocada" ng-model="ultimaMusica">
-	   						<BR></BR>
-	   						<input type="nota" nome="nota" class="form-control" id="text" placeholder="Nota do artista" ng-model="nota">
-	   						<BR></BR>
-                            <button type="button" class="btn" ng-click="addFavoritos()"><span class="glyphicon glyphicon-heart"></span> Adicionar aos favoritos</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
+	<div class="modal fade product_view" id="product_view">
+	    <div class="modal-dialog">
+	        <div class="modal-content colorModal">
+	            <div class="modal-body">
+	            	<div ng-show="mostraBusca">
 
-<div class="linha" ng-show="haFavoritos()">
-	<h2>Lista de Favoritos</h2>
-	<div class="containner">
-	   <h4>Nome do Artista: {{art[0]}}</h4>
-	   <button type="excluir" class="btn btn-default" ng-click="removeFavoritos(art[0])">Remover</button>
-	</div>	
-</div>
+	            		<h3 style="text-align: center">Artistas Buscados</h3>
+						<table class="table table-stried">
+							<tr>
+								<th>
+									<h4>Nome</h4>
+								</th>
+								<th>
+									<h4>Adicionar aos favoritos</h4>
+								</th>
+							</tr>
+							<tr ng-repeat="artista1 in buscados">
+								<td><button class="btn" ng-click="mostraArtista1(artista1)">{{artista1.nome}}</button></td>
+								<td><button class="btn">Add</button></td>
+							</tr>	
+						</table>
+ 					</div>
+ 					<div ng-show="mostraArtista">
+ 						<div class="row">
+ 							<div class="col-lg-6">
+ 								<img style="width: 250px; height: 250px" ng-src="{{artistaSelecionado.imagem}}">
+ 							</div>
+ 							<div class="col-lg-6">
+ 								<h4>Nome:</h4>
+ 								{{artistaSelecionado.nome}}
+ 								<h4>Última música ouvida:</h4>
+ 								{{artistaSelecionado.ultimaMusica}}
+ 								<h4>Nota:</h4>
+ 								{{artistaSelecionado.nota}}
+ 							</h4>
+ 							</div>
+ 						</div>
+ 					</div>
+	            </div>
+	            <div class="modal-footer" ng-show="mostraArtista">	
+	            	<div class="row">
+	            		<div class="col-lg-6">
+							<input style="width: 100px" type="nota" nome="nota" class="form-control" id="text" placeholder="Nota do artista" ng-model="artista.nota">
+							
+							<button type="button" class="botaoModal btn btn-blocked" ng-click="addNota(artista, nota)"> Atribuir nota</button>  
+						</div>
+	            		<div class="col-lg-6">
+		            		<input style="width: 100px" type="ultimaMusica" nome="ultimaMusica" class=" form-control" id="text" placeholder="Última música tocada" ng-model="artista.ultimaMusica">
+
+		            		<button type="button" class="botaoModal btn btn-blocked" ng-click="ultimaMusica(nome, ultimaMusica)"> Última música tocada</button>  
+		            	</div>
+					</div>          	
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+	<div class="linha" ng-show="haFavoritos()">
+		<h2>Lista de Favoritos</h2>
+		<div class="containner">
+		   <h4>Nome do Artista: {{art[0]}}</h4>
+		   <button type="excluir" class="btn btn-default" ng-click="removeFavoritos()">Remover</button>
+		</div>	
+	</div>

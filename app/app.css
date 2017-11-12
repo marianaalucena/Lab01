@@ -124,3 +124,16 @@ label, input{
   border-color: #FFFFFF;
   border-width: thick;
 }
+
+.modalLista{
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  margin-top: 5px;
+ }
+
+ .botaoModal {
+  width: 150;
+  margin-top: 5px;
+ }
+
