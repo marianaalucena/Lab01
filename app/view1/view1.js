@@ -71,36 +71,34 @@ angular.module('myApp.view1', ['ngRoute'])
 			
 	}
 
-	$scope.addNota = function(artista1, nota1){
-      artista1.nota = nota1;
-      delete $scope.nota;
-    }
+	$scope.addNota = function(nota){
+		$scope.artistaSelecionado.nota = nota;
+	}
 
-     $scope.ultimaMusica = function(artistaSelecionado, ultimaMusica){
-      artistaSelecionado.ultimaMusica = ultimaMusica;
+	$scope.atribuiUltimaMusica = function(ultimaMusica){
+		$scope.artistaSelecionado.ultimaMusica = ultimaMusica;
+	}
 
-      delete $scope.ultimaMusica;
-    }
+      
+      $scope.addFavoritos = function(artista1){
 
-      $scope.addFavoritos = function (artista){
-
-	      var jaAdicionado = true;
+	      var adicionado = true;
 
 	      for (var i = 0; i < $scope.favoritos.length; i++) {
-	        if ($scope.favoritos[i].nome === artista.nome && jaAdicionado) {
+	        if ($scope.favoritos[i].nome === artista1.nome && adicionado) {
 	          alert("Artista já foi adicionado a lista de favoritos!");
-	          jaAdicionado = false;
+	          adicionado = false;
 
 	        }
 	      }
 
-	      if(jaAdicionado){
-	        $scope.favoritos.push(angular.copy(artista));
+	      if(adicionado){
+	        $scope.favoritos.push(angular.copy(artista1));
 	        alert("Artista adicionado com sucesso!");
 	      }
 	    }
 
-    $scope.removeFavoritos = function(artista){
+    $scope.excluirFavorito = function(artista){
 
       var naoExcluido = true;
 

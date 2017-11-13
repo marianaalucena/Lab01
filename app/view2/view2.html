@@ -40,8 +40,7 @@
       <input type="text" class="form-control" id="text" placeholder="Digite a duração da música" ng-model="musica.duracao">
     </div>
   </div>
-  {{musica}}
-  {{albuns}}
+ 
   <button type="enviar" class="btn" ng-click="addMusica(musica)" ng-disabled="!musica.nome || !musica.artista || !musica.album || !musica.ano || !musica.duracao">Adicionar</button>
   <button type ="reset" class="btn" value="Limpar">Limpar</button>
 </form>

@@ -8,6 +8,7 @@
 	  </form>
 </div>
 
+
 <div>
 	
 <form class="form linha">
@@ -19,18 +20,28 @@
 				<input type="text" ng-model="artista.imagem" class="form-control" id="text" placeholder="Cole aqui o link da imagem">
 			 </div>
 			 <button type="enviar" ng-click="addArtista(artista)" class="btn">Enviar</button>
-			 </div>
+	 </div>
 		  
-
-		  	<div class="coluna1">
-		  		<h2>Artista(s) adicionado(s):</h2>
-		  		<p ng-repeat="artistaAdicionado in artistas">
-  			{{artistaAdicionado.nome}}
-  		</p>
-  
-  	</div>
-
-  	
+	 	<div class="row">
+	 		<div class="div_esquerda">
+			  	
+			  		<h2>Lista de Artistas:</h2>
+			  		<p ng-repeat="artistaAdicionado in artistas">
+			  		<a href="" class="colorLink" ng-click="" data-toggle="modal" data-target="#product_view">{{artistaAdicionado.nome}}</a>
+	  				</p>
+	  
+	  			
+	  		</div>
+	  		<div class="div_direita">
+	  			
+			  		<h2>Lista de favoritos:</h2>
+			  		<p ng-repeat="favorito1 in favoritos">
+	  				<a href="" class="colorLink" ng-click="" data-toggle="modal" data-target="#modalFavorito">{{favorito1.nome}}</a>
+	  				</p>
+	  
+	  			
+	  		</div>	
+  		</div>  	
 
 
 	  <!-- <button href="#!/view2" type="adionar musica" class="btn">Adicionar Música</button> -->
@@ -54,10 +65,11 @@
 							</tr>
 							<tr ng-repeat="artista1 in buscados">
 								<td><button class="btn" ng-click="mostraArtista1(artista1)">{{artista1.nome}}</button></td>
-								<td><button class="btn">Add</button></td>
+								<td><button class="btn" ng-click="addFavoritos(artista1)">Add</button></td>
 							</tr>	
 						</table>
  					</div>
+
  					<div ng-show="mostraArtista">
  						<div class="row">
  							<div class="col-lg-6">
@@ -70,7 +82,12 @@
  								{{artistaSelecionado.ultimaMusica}}
  								<h4>Nota:</h4>
  								{{artistaSelecionado.nota}}
- 							</h4>
+								<!--<div class="dropdown">
+			                        <button style="width: 120px" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Álbuns<span class="caret"></span></button>
+			                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			                           <li style="text-align: center" ng-repeat="albumModal in artistaModal.albuns">{{albumModal.nome}}</li>
+			                         </ul>
+                    			</div>-->
  							</div>
  						</div>
  					</div>
@@ -78,16 +95,81 @@
 	            <div class="modal-footer" ng-show="mostraArtista">	
 	            	<div class="row">
 	            		<div class="col-lg-6">
-							<input style="width: 100px" type="nota" nome="nota" class="form-control" id="text" placeholder="Nota do artista" ng-model="artista.nota">
+							<input style="width: 255px" type="nota" nome="nota" class="form-control" id="text" placeholder="Nota do artista" ng-model="nota">
 							
-							<button type="button" class="botaoModal btn btn-blocked" ng-click="addNota(artista, nota)"> Atribuir nota</button>  
+							<button type="button" class="botaoModal btn btn-blocked" ng-click="addNota(nota)"> Atribuir nota</button>  
 						</div>
 	            		<div class="col-lg-6">
-		            		<input style="width: 100px" type="ultimaMusica" nome="ultimaMusica" class=" form-control" id="text" placeholder="Última música tocada" ng-model="artista.ultimaMusica">
+		            		<input style="width: 255px" type="ultimaMusica" nome="ultimaMusica" class=" form-control" id="text" placeholder="Última música tocada" ng-model="ultimaMusica">
 
-		            		<button type="button" class="botaoModal btn btn-blocked" ng-click="ultimaMusica(nome, ultimaMusica)"> Última música tocada</button>  
+		            		<button type="button" class="botaoModal btn btn-blocked" ng-click="atribuiUltimaMusica(ultimaMusica)"> Última música tocada</button>  
 		            	</div>
 					</div>          	
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+	<div class="modal fade product_view" id="modalFavorito">
+	    <div class="modal-dialog">
+	        <div class="modal-content colorModal">
+	            <div class="modal-body">
+	            	<div ng-show="mostraBusca">
+
+	            		<h3 style="text-align: center">Artista Favorito</h3>
+						<table class="table table-stried">
+							<tr>
+								<th>
+									<h4>Nome</h4>
+								</th>
+								<th>
+									<h4>Excluir</h4>
+								</th>
+							</tr>
+							<tr ng-repeat="artistaFavorito in favoritos">
+								<td><button class="btn" ng-click="mostraArtista1(artistaFavorito)">{{artistaFavorito.nome}}</button></td>
+								<td><button class="btn" ng-click="excluirFavorito(artistaFavorito)">Sim</button></td>
+							</tr>	
+						</table>
+ 					</div>
+
+ 					<div ng-show="mostraArtista">
+ 						<div class="row">
+ 							<div class="col-lg-6">
+ 								<img style="width: 250px; height: 250px" ng-src="{{artistaSelecionado.imagem}}">
+ 							</div>
+ 							<div class="col-lg-6">
+ 								<h4>Nome:</h4>
+ 								{{artistaSelecionado.nome}}
+ 								<h4>Última música ouvida:</h4>
+ 								{{artistaSelecionado.ultimaMusica}}
+ 								<h4>Nota:</h4>
+ 								{{artistaSelecionado.nota}}
+ 								<!--<div class="dropdown">
+			                        <button style="width: 120px" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Álbuns<span class="caret"></span></button>
+			                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			                           <li style="text-align: center" ng-repeat="albumModal in artistaModal.albuns">{{albumModal.nome}}</li>
+			                         </ul>
+                    			</div>-->
+ 							</div>
+ 						</div>
+ 					</div>
+	            </div>
+	            <div class="modal-footer" ng-show="mostraArtista">	
+	            	<div class="row">
+	            		<div class="col-lg-6 form-group notas">
+							<input style="width: 120px; margin-top: 20px" type="nota" nome="nota" class="form-control" id="text" placeholder="Nota do artista" ng-model="nota">
+							
+							<button type="button" class="botaoModal btn btn-blocked" ng-click="addNota(nota)">Atribuir nota</button>  
+						</div>
+	            		<div class="col-lg-6 form-group notas">
+		            		<input style="width: 120px; margin-top: 20px" type="ultimaMusica" nome="ultimaMusica" class=" form-control" id="text" placeholder="Última música tocada" ng-model="ultimaMusica">
+
+		            		<button type="button" class="botaoModal btn btn-blocked" ng-click="atribuiUltimaMusica(ultimaMusica)"> Última música</button>  
+		            	</div>
+		            	
+					</div>
+					
 	            </div>
 	        </div>
 	    </div>
@@ -99,4 +181,5 @@
 		   <h4>Nome do Artista: {{art[0]}}</h4>
 		   <button type="excluir" class="btn btn-default" ng-click="removeFavoritos()">Remover</button>
 		</div>	
+		
 	</div>
