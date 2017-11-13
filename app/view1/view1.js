@@ -35,7 +35,7 @@ angular.module('myApp.view1', ['ngRoute'])
 			artista.ultimaMusica = "Ainda não escutado!"
 			artista.nota = "-";
 			$scope.artistas.push(artista);
-			alert("Artista adicionado como sucesso.");
+			alert("Artista adicionado com sucesso.");
 		}
 
 		delete $scope.artista;
