@@ -21,11 +21,11 @@ angular.module('myApp.view2', ['ngRoute'])
 
 	$scope.criaAlbum = function(musica){
 
-		var album = new Objetc();
+		var album = new Object();
 		album.nome = musica.album;
 		album.ano = musica.ano;
 		album.musicas = [];
-		album.musica.push(musica);
+		album.musicas.push(musica);
 
 		return album;
 	}

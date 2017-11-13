@@ -39,8 +39,56 @@
       <label class="duracao" for="duraçao">Duração da Música:</label>
       <input type="text" class="form-control" id="text" placeholder="Digite a duração da música" ng-model="musica.duracao">
     </div>
-  </div>
- 
+
+
   <button type="enviar" class="btn" ng-click="addMusica(musica)" ng-disabled="!musica.nome || !musica.artista || !musica.album || !musica.ano || !musica.duracao">Adicionar</button>
   <button type ="reset" class="btn" value="Limpar">Limpar</button>
 </form>
+
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="playlistStyle">
+              
+        <h2>Playlist:</h2>
+        <p ng-repeat="favorito1 in favoritos">
+        <a href="" class="colorLink" ng-click="" data-toggle="modal" data-target="#modalPlaylist">{{playlist.nome}}</a>
+        </p> 
+    </div>
+  </div>    
+  <div class="col-lg-6"> 
+    <div class="estiloPlaylist">
+      <button type="playlist" ng-click="addPlaylist()" class="btn" data-toggle="modal" data-target="#modalAddPlaylist">Adicionar Playlist</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade product_view" id="modalAddPlaylist">
+      <div class="modal-dialog">
+          <div class="modal-content colorModal">
+              <div class="modal-body">
+                <div ng-show="mostraBusca">
+
+                    <h3 style="text-align: center">Playlist</h3>
+                    <table class="table table-stried">
+                      <tr>
+                        <th>
+                          <h4>Nome</h4>
+                        </th>
+                      </tr>  
+                        <tr ng-repeat="playlist in playlists">
+                          <td><input style="width: 255px" type="nome" nome="nota" class="form-control" id="text" placeholder="Nome da playlist" ng-model="nota">
+                          <button type="button" class="botaoModal btn btn-blocked" ng-click=""> Enviar</button>
+                        </td>
+                      </td>
+                    </tr> 
+                    </table>
+                </div>
+              </div>
+            </div>
+    </div>
+  </div>
+</div>
+
+
+         

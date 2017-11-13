@@ -76,8 +76,19 @@ button{
 
 .pesquisa{
   float: right;
-  padding: 8px;
+  padding-top: -38px;
+  margin-right: 100px;
 
+}
+
+.estiloPlaylist{
+  float: right;
+  margin-top: 20px;
+}
+
+.playlistStyle{
+  float: left;
+  margin-bottom: 100px;
 }
 
 .logo{
@@ -150,7 +161,7 @@ label, input{
 
 .div_esquerda{
   float: left;
-  padding-top: 53px;
+  padding-top: 37px;
   margin-left: 20px;
 
 }
